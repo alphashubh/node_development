@@ -1,0 +1,33 @@
+.msg-card {
+    height: auto;
+    list-style: none;
+    font-weight: bold;
+}
+
+.msg-card-li {
+    width: 20%;
+    height: auto;
+    background: skyblue;
+    text-align: left;
+    border-radius: 5%;
+    padding: .5%;
+    margin: .5%;
+}
+
+.form-inline {
+    width: 100%;
+}
+
+.input {
+    width: 80%;
+}
+
+.button {
+    width: auto;   
+    margin-left: 5%;
+    background-color: dodgerblue;
+    border:none;
+    border-radius: 10%;
+    color: white;
+    padding: .5%;
+}

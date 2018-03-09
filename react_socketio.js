@@ -9,18 +9,27 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 const value = require('./const');
-io.on("connection", socket => {
-  //   console.log("New client connected"), setInterval(
-  //     () => getApiAndEmit(socket),
-  //     10000
-  //   );
-    console.log('User connected');  
-  socket.on("chat message", (msg) => {
-    console.log(msg);
+// io.on("connection", socket => {
+//     console.log('User connected');  
+//   socket.on("chat message", (msg) => {
+//     console.log(msg);
+//     //io.emit('chat message', msg);
+//     io.emit('chat message', msg);
+//   })
+//   socket.on("disconnect", () => console.log("Client disconnected"));
+// });
+
+io.on('connection', function(socket){
+    console.log('user connected');
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
     io.emit('chat message', msg);
-  })
-  socket.on("disconnect", () => console.log("Client disconnected"));
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
 });
+
 const getApiAndEmit = async socket => {
   try {
     var i = 1;
