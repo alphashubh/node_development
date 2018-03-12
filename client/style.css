@@ -1,29 +1,35 @@
 .msg-card {
     height: auto;
     list-style: none;
-    font-weight: bold;
+    padding: 2%;
 }
 
 .msg-card-li-incoming {
-    width: 100%;
     height: auto;
-    background: skyblue;
-    text-align: left;
+    float: left;
     border-radius: 5%;
-    padding: .5%;
-    margin: .5%;
+    padding: 2%;
+    clear:both;
 }
 
 .msg-card-li-outgoing {
-    width: 100%;
     height: auto;
-    background: lightblue;
-    text-align: right;
+    float: right;
     border-radius: 5%;
-    padding: .5%;
-    margin: .5%;
+    padding: 2%;
+    clear:both;
+}
+.user-detail {
+    font-size: 80%;
+    color: grey; 
 }
 
+.user-message {
+    
+    background-color: lightskyblue;
+    padding: 10px;
+    border-radius: 10px;
+}
 .form-inline {
     width: 100%;
 }
