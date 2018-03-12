@@ -4,11 +4,21 @@
     font-weight: bold;
 }
 
-.msg-card-li {
-    width: 20%;
+.msg-card-li-incoming {
+    width: 100%;
     height: auto;
     background: skyblue;
     text-align: left;
+    border-radius: 5%;
+    padding: .5%;
+    margin: .5%;
+}
+
+.msg-card-li-outgoing {
+    width: 100%;
+    height: auto;
+    background: lightblue;
+    text-align: right;
     border-radius: 5%;
     padding: .5%;
     margin: .5%;

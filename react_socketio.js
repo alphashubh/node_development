@@ -43,4 +43,4 @@ const getApiAndEmit = async socket => {
     console.error(`Error: ${error.code}`);
   }
 };
-server.listen(port, () => console.log(`Listening on port ${port}`));
+server.listen(4001, '10.224.238.153', () => console.log(`Listening on port ${port}`));

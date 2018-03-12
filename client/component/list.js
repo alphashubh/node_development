@@ -9,20 +9,21 @@ class List extends React.Component {
     }
 show(item){
     console.log(item.name);
-    if(item.name=="user1"){
+    if(item.msg.from!= item.name){
         //alert("message from user 1");
        // this.setState({cName : 'msg-card-li' })
-      return <div >{item.msg}</div>
+       console.log("check Array obj", item.msg.msg);
+      return <div className="msg-card-li-incoming">{item.msg.msg}</div>
     }
     else{
-        return null
+        return <div className="msg-card-li-outgoing">{item.msg.msg}</div>
     }
 }
     render(props) {
           return (
             <ul className="msg-card">
                 {
-                    this.props.items.map((item) => <li className="msg-card-li">{this.show(item)}</li>)
+                    this.props.items.map((item) => <li >{this.show(item)}</li>)
                 }
 
             </ul>
