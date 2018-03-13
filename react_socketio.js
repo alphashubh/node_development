@@ -9,20 +9,25 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 const value = require('./const');
-// io.on("connection", socket => {
-//     console.log('User connected');  
-//   socket.on("chat message", (msg) => {
-//     console.log(msg);
-//     //io.emit('chat message', msg);
-//     io.emit('chat message', msg);
-//   })
-//   socket.on("disconnect", () => console.log("Client disconnected"));
-// });
+
+const client_details= {
+  name :"",
+   client_id: "" 
+}
+
+var allList=new Map();
 
 io.on('connection', function(socket){
     console.log('user connected');
+    console.log(socket.handshake.query);
+    console.log(socket.handshake.query['username']);    
+    console.log(socket.id);
+    client_details.name=socket.handshake.query['username'];
+    client_details.client_id=socket.id;
+   allList.set(client_details.name, client_details.client_id);
+    console.log(allList);
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+    console.log('message: ' + msg.from);
     io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
@@ -30,17 +35,7 @@ io.on('connection', function(socket){
   });
 });
 
-const getApiAndEmit = async socket => {
-  try {
-    var i = 1;
-    var temp = value.sssss.temp_value;
-    console.log(temp);
-    // const res = await axios.get(
-    //   "https://api.darksky.net/forecast/PUT_YOUR_API_KEY_HERE/43.7695,11.2558"
-    // );
-    socket.emit("FromAPI", temp);
-  } catch (error) {
-    console.error(`Error: ${error.code}`);
-  }
-};
-server.listen(4001, '10.224.238.153', () => console.log(`Listening on port ${port}`));
+
+
+
+server.listen(4001, '10.0.0.3', () => console.log(`Listening on port ${port}`));

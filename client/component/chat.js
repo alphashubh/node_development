@@ -9,7 +9,7 @@ class Chat extends React.Component{
     super();
     this.state = {
       response: [],
-      endpoint: "http://10.224.238.153:4001",
+      endpoint: "http://10.0.0.3:4001",
       message: [],
       socket: "",
     };
@@ -21,7 +21,7 @@ class Chat extends React.Component{
   //    // socket.on("FromAPI", data => this.setState({ response: data }));
   //   }
   componentDidMount(){
-  this.socket= socketIOClient("http://10.224.238.153:4001");
+  this.socket= socketIOClient("http://10.0.0.3:4001/", {query : "username="+ this.props.location.state.username});
   this.showMessage();  
   }
  
