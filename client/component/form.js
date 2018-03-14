@@ -9,13 +9,13 @@ class Form extends React.Component {
     }
     render(props) {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)} >
+            <form onSubmit={this.handleSubmit.bind(this)} className="form-inline">
                 <input
-                className="input"
+                className="form-control"
                     ref={(text_msg) => { this.text_msg = text_msg } }
                     placeholder="Type text here...."
                     />
-                <button className="button">send</button>
+                <button  type="submit" className="btn btn-primary">send</button>
             </form>
         )
     }

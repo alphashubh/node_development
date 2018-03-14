@@ -4,50 +4,52 @@ import socketIOClient from "socket.io-client";
 import List from './list';
 import Form from './form';
 
-class Chat extends React.Component{
-   constructor() {
+class Chat extends React.Component {
+  constructor() {
     super();
     this.state = {
       response: [],
-      endpoint: "http://10.0.0.3:4001",
+      endpoint: "http://10.224.238.153:4001",
       message: [],
       socket: "",
     };
-    var socket= "";
+    var socket = "";
   }
   //   componentDidMount() {
   //     const { endpoint } = this.state;
   //     const socket = socketIOClient(endpoint);
   //    // socket.on("FromAPI", data => this.setState({ response: data }));
   //   }
-  componentDidMount(){
-  this.socket= socketIOClient("http://10.0.0.3:4001/", {query : "username="+ this.props.location.state.username});
-  this.showMessage();  
+  componentDidMount() {
+    this.socket = socketIOClient("http://10.224.238.153:4001/", { query: { "username": this.props.location.state.username, "to": this.props.location.state.to } });
+    console.log("send to user", this.props.location.state.to);
+    this.showMessage();
   }
- 
+
   sendMessage(inputValue) {
     // this.setState({ response: this.text_msg.value })
     //console.log(this.text_msg.value);
     var value = {
-        from: this.props.location.state.username,
-        msg:  inputValue   
+      from: this.props.location.state.username,
+      to: this.props.location.state.to,
+      msg: inputValue
     };
-   this.socket.emit("chat message", value);
-   console.log('message sent')
+    this.socket.emit("chat message", value);
+    console.log('message sent')
     //this.showMessage();
   }
   showMessage(props) {
-    console.log("upcoming list..........");    
+    console.log("upcoming list..........");
     this.socket.on("chat message", (msg) => {
       console.log('coming message', msg);
       let list = this.state.response;
-      var details= {
+      var details = {
         name: this.props.location.state.username,
-          msg
+        msg
       }
       list.push(details);
-     // list.push(msg);
-      console.log('after list ', list);      
+      // list.push(msg);
+      console.log('after list ', list);
       this.setState({ message: list });
       console.log("upcoming list after push", this.state.message);
     })
@@ -57,13 +59,15 @@ class Chat extends React.Component{
   render(props) {
 
     return (
-      <div>
-      <div className="message-board">
-        <List items={this.state.message} />
-        </div>
-        <div className="nav navbar-default navbar-fixed-bottom  ">
-         <Form sendMessage={this.sendMessage.bind(this)}/>
-        </div>
+      <div >
+          <div className="col-md-4 col-md-offset-4 ">
+            <div className="message-board">
+              <List items={this.state.message} />
+            </div>
+            <div className="col-md-4 col-md-offset-5 navbar-fixed-bottom  ">
+              <Form sendMessage={this.sendMessage.bind(this)} />
+            </div>
+          </div>
       </div>
     );
   }
