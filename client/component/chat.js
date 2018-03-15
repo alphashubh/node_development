@@ -32,8 +32,9 @@ class Chat extends React.Component {
     var value = {
       from: this.props.location.state.username,
       to: this.props.location.state.to,
-      msg: inputValue
-    };
+      msg: inputValue,
+      timestamp: Date()
+    };  
     this.socket.emit("chat message", value);
     console.log('message sent')
     //this.showMessage();

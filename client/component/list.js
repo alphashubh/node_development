@@ -15,7 +15,7 @@ class List extends React.Component {
             console.log("check Array obj", item.msg.msg);
             return(
             <div className="msg-card-li-incoming">
-                <div className="user-detail">{item.msg.from}</div>
+                <div className="user-detail">{item.msg.timestamp} {item.msg.from}</div>
                 <div className="user-message">{item.msg.msg}</div>
             </div>);
         }
