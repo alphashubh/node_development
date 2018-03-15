@@ -25,10 +25,21 @@
     clear:both;
 }
 .user-detail {
-    font-size: 80%;
+    font-size: 100%;
     color: grey; 
 }
 
+.msg-time {
+    font-size: 80%;
+    color: grey; 
+    width: 60px;
+}
+.msg-time-out {
+    font-size: 80%;
+    color: grey; 
+    width: 60px;
+    text-align: right;
+}
 .user-message {
     
     background-color: lightskyblue;
