@@ -1,13 +1,35 @@
-
-.msg-card {
-    height: auto;
-    list-style: none;
-    padding: 2%;
-    min-height: 100%;
-    background-color: #dfe3ee;
-    border: 1px solid #8b9dc3;
-    border-radius: 5%;
+.header {
+    background-color: dodgerblue;
+    color: white;
+    margin-top: 30px;
+    font-size: 150%;
+    font-weight: bold;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 5px;
 }
+.msg-card {
+   width: 200px;
+   height: 540px;
+    border: 1px solid #8b9dc3;
+    
+    box-shadow: 10px 10px  #888;
+    padding: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.list-container {
+   padding: 0;
+    list-style: none;
+    height: 92%;
+    
+    overflow-y: scroll;
+}
+/* width */
+.list-container::-webkit-scrollbar {
+    width: 0px;
+}
+
 
 .msg-card-li-incoming {
     height: auto;
@@ -30,14 +52,14 @@
 }
 
 .msg-time {
-    font-size: 80%;
+    font-size: 10px;
     color: grey; 
-    width: 60px;
+    width: 40px;
 }
 .msg-time-out {
-    font-size: 80%;
+    font-size: 10px;
     color: grey; 
-    width: 60px;
+    width: 40px;
     text-align: right;
 }
 .user-message {
@@ -45,8 +67,10 @@
     background-color: lightskyblue;
     padding: 10px;
     border-radius: 10px;
+  max-width: 200px;
+    word-wrap: break-word; 
 }
-.form-inline {
+.form {
     width: 100%;
 }
 
@@ -62,4 +86,10 @@
     border-radius: 10%;
     color: white;
     padding: .5%;
+}
+.form-control {
+    width: 100%;
+}
+.form td{
+    width: 90%;
 }

@@ -21,7 +21,7 @@ class List extends React.Component {
             console.log("check Array obj", item.msg.msg);
             return(
             <div className="msg-card-li-incoming">
-                <div className="user-detail">{item.msg.from}</div>
+                
                 <table>
                     <tbody>
                 <tr>
@@ -48,7 +48,7 @@ class List extends React.Component {
     }
     render(props) {
         return (
-            <ul className="msg-card">
+            <ul className="list-container">
                 {
                     this.props.items.map((item) => <li >{this.show(item)}</li>)
                 }

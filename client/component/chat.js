@@ -9,7 +9,7 @@ class Chat extends React.Component {
     super();
     this.state = {
       response: [],
-      endpoint: "http://10.0.0.3:4001",
+      endpoint: "http://10.224.238.153:4001",
       message: [],
       socket: "",
     };
@@ -21,7 +21,7 @@ class Chat extends React.Component {
   //    // socket.on("FromAPI", data => this.setState({ response: data }));
   //   }
   componentDidMount() {
-    this.socket = socketIOClient("http://10.0.0.3:4001/", { query: { "username": this.props.location.state.username, "to": this.props.location.state.to } });
+    this.socket = socketIOClient("http://10.224.238.153:4001/", { query: { "username": this.props.location.state.username, "to": this.props.location.state.to } });
     console.log("send to user", this.props.location.state.to);
     this.showMessage();
   }
@@ -29,14 +29,14 @@ class Chat extends React.Component {
   sendMessage(inputValue) {
     // this.setState({ response: this.text_msg.value })
     //console.log(this.text_msg.value);
-    var date= new Date().toLocaleString();
+    var date = new Date().toLocaleString();
     console.log(date);
     var value = {
       from: this.props.location.state.username,
       to: this.props.location.state.to,
       msg: inputValue,
       timestamp: date
-    };  
+    };
     this.socket.emit("chat message", value);
     console.log('message sent')
     //this.showMessage();
@@ -63,14 +63,18 @@ class Chat extends React.Component {
 
     return (
       <div >
-          <div className="col-md-4 col-md-offset-4 ">
-            <div className="message-board">          
+        <div className="col-md-3 col-md-offset-4 header">Chat with {this.props.location.state.to.toUpperCase()} </div>
+
+        <div className=" col-md-3 col-md-offset-4 msg-card">
+          <div >
+            <div className="message-board">
               <List items={this.state.message} />
             </div>
-            <div className="col-md-4 col-md-offset-5 navbar-fixed-bottom  ">
+            <div >
               <Form sendMessage={this.sendMessage.bind(this)} />
             </div>
           </div>
+        </div>
       </div>
     );
   }
